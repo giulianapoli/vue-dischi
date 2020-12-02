@@ -1,9 +1,12 @@
+
 const rootApp = new Vue({
   el: "#root",
 
   data: {
     insiemeAlbum: [],
-    elementiFiltrati: []
+    genereSelezionato: 'all',
+    generi: ['all', 'pop', 'rock', 'metal', 'jazz' ],
+    hover: false
   },
 
   mounted() {
@@ -12,5 +15,18 @@ const rootApp = new Vue({
       .then(result => {
         this.insiemeAlbum = result.data.response;
       });
+  },
+
+
+  computed: {
+    elencoGeneri () {
+      if(this.genereSelezionato === 'all') {
+        return this.insiemeAlbum;
+      } else {
+        return this.insiemeAlbum.filter( element => {
+          element.genre.toLowerCase() === this.genereSelezionato})
+
+      }
   }
+}
 });

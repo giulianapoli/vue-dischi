@@ -21,14 +21,30 @@
     <div id="root">
       <header>
         <div class="container">
-          <img src="logo.png" alt="logo" />
+          <img src="logo.png" alt="logo"/>
+          <div class="genres">
+            <select
+            v-model="genereSelezionato"
+            >
+            <option value="All"></option>
+            <option
+            v-for="genere in generi"
+            >
+            {{genere}}
+            </option>
+
+          </select>
+          </div>
         </div>
+
+
       </header>
 
       <div class="cds-container container">
         <!-- Disco ad esempio -->
         <div class="cd"
-        v-for="album in insiemeAlbum"
+        v-for="album in elencoGeneri"
+        @mouseover="hover = true"
         >
           <img
           :src="album.poster"
