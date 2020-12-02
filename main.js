@@ -22,11 +22,10 @@ const rootApp = new Vue({
     elencoGeneri () {
       if(this.genereSelezionato === 'all') {
         return this.insiemeAlbum;
-      } else {
-        return this.insiemeAlbum.filter( element => {
-          element.genre.toLowerCase() === this.genereSelezionato})
-
       }
+      return this.insiemeAlbum.filter( element =>
+        element.genre.toLowerCase() === this.genereSelezionato)
+
   }
 }
 });
